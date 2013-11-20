@@ -7,21 +7,24 @@
 //
 
 #import "YYImagePickerViewController.h"
-#import "YYImageListViewController.h"
+#import "YYImageGridViewController.h"
+#import "YYImageGroupsViewController.h"
 
 @interface YYImagePickerViewController ()
 
-@property (nonatomic,strong) YYImageListViewController *imageListController;
+@property (nonatomic,strong) YYImageGroupsViewController *groupViewController;
+@property (nonatomic,strong) YYImageGridViewController *imageListController;
+
 @end
 
 @implementation YYImagePickerViewController
 
 - (id)init
 {
-    self.imageListController = [[YYImageListViewController alloc] init];
-    self = [super initWithRootViewController:self.imageListController];
+    self.groupViewController = [[YYImageGroupsViewController alloc] init];
+    self = [super initWithRootViewController:self.groupViewController];
     if (self) {
-        
+        self.navigationController.navigationBar.translucent = YES;
     }
     return self;
 }

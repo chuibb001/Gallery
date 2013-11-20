@@ -15,9 +15,9 @@
 
 @interface YYGridView : UITableView<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) id<YYGridViewDelegate> YYGridViewDelegate;
+@property (nonatomic, weak) id<YYGridViewDelegate> gridViewDelegate;
 
-@property (nonatomic, weak) id<YYGridViewDataSource> YYGridViewDataSource;
+@property (nonatomic, weak) id<YYGridViewDataSource> gridViewDataSource;
 
 /**
  *  return a reusable cell

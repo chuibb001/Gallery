@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3E396D0B-6AB1-4C1D-AC8A-F18AF3926D68</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Gallery</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0CF0E6E8-5425-4B84-825B-42E36B6B06CF</key>
+		<string>https://github.com/chuibb001/Gallery.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Gallery.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0CF0E6E8-5425-4B84-825B-42E36B6B06CF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/chuibb001/Gallery.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0CF0E6E8-5425-4B84-825B-42E36B6B06CF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0CF0E6E8-5425-4B84-825B-42E36B6B06CF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Gallery</string>
+		</dict>
+	</array>
+</dict>
+</plist>

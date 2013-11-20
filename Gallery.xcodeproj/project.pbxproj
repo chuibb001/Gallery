@@ -29,13 +29,17 @@
 		563CFA5A18361D6400673A68 /* check_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563CFA4E18361D6400673A68 /* check_selected@2x.png */; };
 		563CFA5B18361D6400673A68 /* check_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563CFA4F18361D6400673A68 /* check_unselected@2x.png */; };
 		563CFA5C18361D6400673A68 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563CFA5018361D6400673A68 /* Icon@2x.png */; };
-		563CFA5D18361D6400673A68 /* YYImageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA5218361D6400673A68 /* YYImageListViewController.m */; };
+		563CFA5D18361D6400673A68 /* YYImageGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA5218361D6400673A68 /* YYImageGridViewController.m */; };
 		563CFA5E18361D6400673A68 /* YYImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA5418361D6400673A68 /* YYImagePickerViewController.m */; };
 		563CFA6918361D8500673A68 /* YYGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA6018361D8400673A68 /* YYGalleryView.m */; };
 		563CFA6A18361D8500673A68 /* YYGridDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA6218361D8400673A68 /* YYGridDataModel.m */; };
 		563CFA6B18361D8500673A68 /* YYGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA6418361D8400673A68 /* YYGridView.m */; };
 		563CFA6C18361D8500673A68 /* YYGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA6618361D8400673A68 /* YYGridViewCell.m */; };
 		563CFA6D18361D8500673A68 /* YYZoomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA6818361D8400673A68 /* YYZoomImageView.m */; };
+		563CFA76183622FF00673A68 /* YYAssetsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 563CFA75183622FF00673A68 /* YYAssetsManager.m */; };
+		567350B61839AEC600C1F5E8 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567350B51839AEC600C1F5E8 /* AssetsLibrary.framework */; };
+		567350B91839C07C00C1F5E8 /* YYImageGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567350B81839C07C00C1F5E8 /* YYImageGroupsViewController.m */; };
+		567350BC1839EC0700C1F5E8 /* YYImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567350BB1839EC0700C1F5E8 /* YYImagePreviewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +80,8 @@
 		563CFA4E18361D6400673A68 /* check_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_selected@2x.png"; sourceTree = "<group>"; };
 		563CFA4F18361D6400673A68 /* check_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_unselected@2x.png"; sourceTree = "<group>"; };
 		563CFA5018361D6400673A68 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		563CFA5118361D6400673A68 /* YYImageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImageListViewController.h; sourceTree = "<group>"; };
-		563CFA5218361D6400673A68 /* YYImageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImageListViewController.m; sourceTree = "<group>"; };
+		563CFA5118361D6400673A68 /* YYImageGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImageGridViewController.h; sourceTree = "<group>"; };
+		563CFA5218361D6400673A68 /* YYImageGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImageGridViewController.m; sourceTree = "<group>"; };
 		563CFA5318361D6400673A68 /* YYImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImagePickerViewController.h; sourceTree = "<group>"; };
 		563CFA5418361D6400673A68 /* YYImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImagePickerViewController.m; sourceTree = "<group>"; };
 		563CFA5F18361D8400673A68 /* YYGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYGalleryView.h; sourceTree = "<group>"; };
@@ -90,6 +94,13 @@
 		563CFA6618361D8400673A68 /* YYGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYGridViewCell.m; sourceTree = "<group>"; };
 		563CFA6718361D8400673A68 /* YYZoomImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYZoomImageView.h; sourceTree = "<group>"; };
 		563CFA6818361D8400673A68 /* YYZoomImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYZoomImageView.m; sourceTree = "<group>"; };
+		563CFA74183622FF00673A68 /* YYAssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAssetsManager.h; sourceTree = "<group>"; };
+		563CFA75183622FF00673A68 /* YYAssetsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAssetsManager.m; sourceTree = "<group>"; };
+		567350B51839AEC600C1F5E8 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		567350B71839C07C00C1F5E8 /* YYImageGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImageGroupsViewController.h; sourceTree = "<group>"; };
+		567350B81839C07C00C1F5E8 /* YYImageGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImageGroupsViewController.m; sourceTree = "<group>"; };
+		567350BA1839EC0700C1F5E8 /* YYImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImagePreviewViewController.h; sourceTree = "<group>"; };
+		567350BB1839EC0700C1F5E8 /* YYImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImagePreviewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567350B61839AEC600C1F5E8 /* AssetsLibrary.framework in Frameworks */,
 				563CFA1718361D3800673A68 /* CoreGraphics.framework in Frameworks */,
 				563CFA1918361D3800673A68 /* UIKit.framework in Frameworks */,
 				563CFA1518361D3800673A68 /* Foundation.framework in Frameworks */,
@@ -138,6 +150,7 @@
 		563CFA1318361D3800673A68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				567350B51839AEC600C1F5E8 /* AssetsLibrary.framework */,
 				563CFA1418361D3800673A68 /* Foundation.framework */,
 				563CFA1618361D3800673A68 /* CoreGraphics.framework */,
 				563CFA1818361D3800673A68 /* UIKit.framework */,
@@ -206,14 +219,14 @@
 		563CFA7018361FFF00673A68 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				563CFA6718361D8400673A68 /* YYZoomImageView.h */,
-				563CFA6818361D8400673A68 /* YYZoomImageView.m */,
+				563CFA6318361D8400673A68 /* YYGridView.h */,
+				563CFA6418361D8400673A68 /* YYGridView.m */,
 				563CFA6518361D8400673A68 /* YYGridViewCell.h */,
 				563CFA6618361D8400673A68 /* YYGridViewCell.m */,
 				563CFA5F18361D8400673A68 /* YYGalleryView.h */,
 				563CFA6018361D8400673A68 /* YYGalleryView.m */,
-				563CFA6318361D8400673A68 /* YYGridView.h */,
-				563CFA6418361D8400673A68 /* YYGridView.m */,
+				563CFA6718361D8400673A68 /* YYZoomImageView.h */,
+				563CFA6818361D8400673A68 /* YYZoomImageView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -221,8 +234,12 @@
 		563CFA711836200400673A68 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				563CFA5118361D6400673A68 /* YYImageListViewController.h */,
-				563CFA5218361D6400673A68 /* YYImageListViewController.m */,
+				567350B71839C07C00C1F5E8 /* YYImageGroupsViewController.h */,
+				567350B81839C07C00C1F5E8 /* YYImageGroupsViewController.m */,
+				563CFA5118361D6400673A68 /* YYImageGridViewController.h */,
+				563CFA5218361D6400673A68 /* YYImageGridViewController.m */,
+				567350BA1839EC0700C1F5E8 /* YYImagePreviewViewController.h */,
+				567350BB1839EC0700C1F5E8 /* YYImagePreviewViewController.m */,
 				563CFA5318361D6400673A68 /* YYImagePickerViewController.h */,
 				563CFA5418361D6400673A68 /* YYImagePickerViewController.m */,
 			);
@@ -247,6 +264,8 @@
 		563CFA731836206100673A68 /* Commen */ = {
 			isa = PBXGroup;
 			children = (
+				563CFA74183622FF00673A68 /* YYAssetsManager.h */,
+				563CFA75183622FF00673A68 /* YYAssetsManager.m */,
 			);
 			name = Commen;
 			sourceTree = "<group>";
@@ -356,13 +375,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567350B91839C07C00C1F5E8 /* YYImageGroupsViewController.m in Sources */,
 				563CFA2B18361D3800673A68 /* ViewController.m in Sources */,
+				563CFA76183622FF00673A68 /* YYAssetsManager.m in Sources */,
 				563CFA6A18361D8500673A68 /* YYGridDataModel.m in Sources */,
 				563CFA6918361D8500673A68 /* YYGalleryView.m in Sources */,
 				563CFA6C18361D8500673A68 /* YYGridViewCell.m in Sources */,
 				563CFA2518361D3800673A68 /* AppDelegate.m in Sources */,
-				563CFA5D18361D6400673A68 /* YYImageListViewController.m in Sources */,
+				563CFA5D18361D6400673A68 /* YYImageGridViewController.m in Sources */,
 				563CFA5E18361D6400673A68 /* YYImagePickerViewController.m in Sources */,
+				567350BC1839EC0700C1F5E8 /* YYImagePreviewViewController.m in Sources */,
 				563CFA6D18361D8500673A68 /* YYZoomImageView.m in Sources */,
 				563CFA6B18361D8500673A68 /* YYGridView.m in Sources */,
 				563CFA2118361D3800673A68 /* main.m in Sources */,
@@ -574,6 +596,7 @@
 				563CFA4518361D3900673A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		563CFA4618361D3900673A68 /* Build configuration list for PBXNativeTarget "GalleryTests" */ = {
 			isa = XCConfigurationList;
@@ -582,6 +605,7 @@
 				563CFA4818361D3900673A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

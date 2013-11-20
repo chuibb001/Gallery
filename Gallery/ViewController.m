@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "YYImagePickerViewController.h"
+#import "YYAssetsManager.h"
 
 @interface ViewController ()
 
@@ -31,16 +32,33 @@
         [self.view addSubview:self.button];
         self.listData = [[NSMutableArray alloc] init];
     
-//    GalleryView *g = [[GalleryView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) delegate:self];
+//    YYGalleryView *g = [[YYGalleryView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) delegate:self];
 //    g.delegate = self;
 //    self.listData = [[NSMutableArray alloc] init];
 //    for (int i = 1; i<=5; i++) {
 //        [self.listData addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i]]];
 //    }
 //    g.currentIndex = 4;
-//    [self.view addSubview:g];
+//    //[self.view addSubview:g];
 //    self.totalCount = [self.listData count];
 //    self.currentIndex = 0;
+    
+    __block NSURL *aurl = nil;
+    [[YYAssetsManager sharedInstance] allAssetsGroupsWithCompletionHandler:^(NSArray *groups){
+        //NSLog(@"%@",groups);
+        [[YYAssetsManager sharedInstance] allAssetsWithGroup:groups[0] completionHandler:^(NSArray * allAssets) {
+            //NSLog(@"%@",allAssets);
+            NSURL* url = ((ALAsset *)allAssets[0]).defaultRepresentation.url;
+            aurl = url;
+        }];
+    }];
+    
+    [[YYAssetsManager sharedInstance] assetWithURL:aurl completionHandler:^(ALAsset *asset)
+     {
+         //NSLog(@"%@",asset);
+     }];
+    
+    
 }
 
 - (NSInteger)numberOfItemsInGallery
@@ -79,8 +97,8 @@
     YYImagePickerViewController *picker = [[YYImagePickerViewController alloc] init];
     picker.imagePickerDelegate = self;
     // photos
-    [self loadImageFromPhotoLibrary];
-    picker.images = self.listData;
+    //[self loadImageFromPhotoLibrary];
+    //picker.images = self.listData;
     [self presentViewController:picker animated:YES completion:nil];
 }
 - (void)printALAssetInfo:(ALAsset*)asset
@@ -94,7 +112,7 @@
     //NSLog(@"photoSize:%@", NSStringFromCGSize(photo.size));
     // 取图片缩图图
     UIImage* photoThumbnail = [UIImage imageWithCGImage:asset.thumbnail];
-    NSLog(@"%@", asset.defaultRepresentation.url);
+    //NSLog(@"%@", asset.defaultRepresentation.url);
     //NSLog(@"photoSize2:%@", NSStringFromCGSize(photoThumbnail.size));
     NSURL *url = asset.defaultRepresentation.url;
     

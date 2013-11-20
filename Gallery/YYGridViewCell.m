@@ -29,7 +29,7 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     self.imageView.frame = CGRectMake(2, 2, self.frame.size.width - 4, self.frame.size.height - 4);
-    self.radioButton.frame = CGRectMake(self.frame.size.width - 25, 5, 20, 20);
+    self.radioButton.frame = CGRectMake(self.frame.size.width - 33, 5, 30, 30);
 }
 
 - (void)setupData:(YYGridDataModel *)dataModel {

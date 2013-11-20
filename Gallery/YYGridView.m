@@ -37,11 +37,11 @@
 }
 
 - (NSInteger)numberOfColumns {
-    return  [self.YYGridViewDataSource numberOfColumnsInYYGridView:self];
+    return  [self.gridViewDataSource numberOfColumnsInYYGridView:self];
 }
 
 - (NSInteger)numberOfCells {
-    return [self.YYGridViewDataSource numberOfCellsInYYGridView:self];
+    return [self.gridViewDataSource numberOfCellsInYYGridView:self];
 }
 
 - (YYGridViewCell *)cellForRowIndex:(int)rowIndex columnIndex:(int)columnIndex {
@@ -53,8 +53,8 @@
 #pragma mark UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = [self.YYGridViewDataSource numberOfCellsInYYGridView:self];
-    int column = [self.YYGridViewDataSource numberOfColumnsInYYGridView:self];
+    int count = [self.gridViewDataSource numberOfCellsInYYGridView:self];
+    int column = [self.gridViewDataSource numberOfColumnsInYYGridView:self];
     int row = count / column;
     int last = count % column;
     if (last > 0) {
@@ -65,7 +65,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.YYGridViewDataSource YYGridView:self heightForRowAtIndex:indexPath.row];
+    return [self.gridViewDataSource YYGridView:self heightForRowAtIndex:indexPath.row];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,11 +78,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 	
-	int count = [self.YYGridViewDataSource numberOfCellsInYYGridView:self];
-    int column = [self.YYGridViewDataSource numberOfColumnsInYYGridView:self];
+	int count = [self.gridViewDataSource numberOfCellsInYYGridView:self];
+    int column = [self.gridViewDataSource numberOfColumnsInYYGridView:self];
 	
 	CGFloat x = 0.0;
-	CGFloat height = [self.YYGridViewDataSource YYGridView:self heightForRowAtIndex:indexPath.row];
+	CGFloat height = [self.gridViewDataSource YYGridView:self heightForRowAtIndex:indexPath.row];
 	CGFloat width = self.frame.size.width / column;
     
 	for (int i = 0;i < column;i++) {
@@ -105,7 +105,7 @@
 			self.currentReusableCell = nil;
 		}
 		
-		YYGridViewCell *gridCell = [self.YYGridViewDataSource YYGridView:self cellForRowIndex:indexPath.row columnIndex:i];
+		YYGridViewCell *gridCell = [self.gridViewDataSource YYGridView:self cellForRowIndex:indexPath.row columnIndex:i];
 		
 		if (gridCell.superview != cell.contentView) {
 			[cell removeFromSuperview];
@@ -135,8 +135,8 @@
     YYGridViewCell *cell = (YYGridViewCell *)sender.view;
     
     // responde to the delegate
-    if (self.YYGridViewDelegate && [self.YYGridViewDelegate respondsToSelector:@selector(YYGridView:didSelectCellAtRowIndex:columnIndex:)]) {
-        [self.YYGridViewDelegate YYGridView:self didSelectCellAtRowIndex:cell.dataModel.rowIndex columnIndex:cell.dataModel.columnIndex];
+    if (self.gridViewDelegate && [self.gridViewDelegate respondsToSelector:@selector(YYGridView:didSelectCellAtRowIndex:columnIndex:)]) {
+        [self.gridViewDelegate YYGridView:self didSelectCellAtRowIndex:cell.dataModel.rowIndex columnIndex:cell.dataModel.columnIndex];
     }
 }
 
@@ -149,8 +149,8 @@
     [((YYGridViewCell *)[self cellForRowIndex:dataModel.rowIndex columnIndex:dataModel.columnIndex]) setCellSelected:dataModel.isSelected];
     
     // responde to the delegate
-    if (self.YYGridViewDelegate && [self.YYGridViewDelegate respondsToSelector:@selector(YYGridView:didClickRadioButtonAtRowIndex:columnIndex:)]) {
-        [self.YYGridViewDelegate YYGridView:self didClickRadioButtonAtRowIndex:dataModel.rowIndex columnIndex:dataModel.columnIndex];
+    if (self.gridViewDelegate && [self.gridViewDelegate respondsToSelector:@selector(YYGridView:didClickRadioButtonAtRowIndex:columnIndex:)]) {
+        [self.gridViewDelegate YYGridView:self didClickRadioButtonAtRowIndex:dataModel.rowIndex columnIndex:dataModel.columnIndex];
     }
     
 }

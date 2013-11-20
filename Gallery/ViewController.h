@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
 #import "YYImagePickerViewController.h"
 #import "YYGridDataModel.h"
 #import "YYGalleryView.h"

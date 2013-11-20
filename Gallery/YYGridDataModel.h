@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface YYGridDataModel : NSObject
 
@@ -14,5 +15,7 @@
 @property (nonatomic,assign) int columnIndex;
 @property (nonatomic,strong) UIImage *image;    // thumbnail image
 @property (nonatomic,assign) BOOL isSelected;
-@property (nonatomic,strong) NSURL *assetsURL;  
+@property (nonatomic,strong) NSURL *assetsURL;
+@property (nonatomic,strong) ALAsset *asset;
+
 @end

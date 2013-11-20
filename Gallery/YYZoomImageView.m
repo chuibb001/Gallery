@@ -8,6 +8,12 @@
 
 #import "YYZoomImageView.h"
 
+@interface YYZoomImageView ()
+
+@property(nonatomic, assign) float rate; // width / height
+
+@end
+
 @implementation YYZoomImageView
 
 - (id)initWithFrame:(CGRect)frame
@@ -19,6 +25,7 @@
 		self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 		[self addSubview:self.imageView];
         
+        // setup scrollView
 		self.backgroundColor = [UIColor clearColor];
 		self.delegate = self;
 		self.showsHorizontalScrollIndicator = NO;
@@ -26,10 +33,18 @@
 		self.decelerationRate = UIScrollViewDecelerationRateFast;
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.maximumZoomScale = 2.0;
+        self.zoomScale = 1.0;
         self.bounces = YES;
+        self.scrollEnabled = YES;
+        
+        // double tap
         UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
         doubleTap.numberOfTapsRequired = 2;
         [self addGestureRecognizer:doubleTap];
+        
+        
+        
+        self.rate = self.frame.size.width / self.frame.size.height;
     }
     return self;
 }
@@ -41,6 +56,21 @@
 - (void)setImage:(UIImage *)image
 {
     self.imageView.image = image;
+    
+    if (!image) {
+        return;
+    }
+    // reset imageView's frame
+    if (image.size.width / image.size.height < self.rate) {
+        float newHeight = self.imageView.frame.size.width * image.size.height / image.size.width;
+        self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, newHeight);
+    } else {
+        self.imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    }
+    
+    // er..
+    [self setZoomScale:self.minimumZoomScale animated:NO];
+    [self setContentOffset:CGPointMake(0, 0)];
 }
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)tap
@@ -53,6 +83,8 @@
 	}
 }
 
+
+
 - (void)resetNomalScale
 {
     [self setZoomScale:self.minimumZoomScale animated:YES];
@@ -62,5 +94,9 @@
 	return self.imageView;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+}
 
 @end

@@ -6,22 +6,29 @@
 //  Copyright (c) 2013年 yan simon. All rights reserved.
 //
 
-#import "YYImageListViewController.h"
+#import "YYImageGridViewController.h"
 #import "YYImagePickerViewController.h"
 
-@interface YYImageListViewController ()
+@interface YYImageGridViewController ()
 
 @end
 
-@implementation YYImageListViewController
+@implementation YYImageGridViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self setupData];
-    [self initYYGridView];
-    [self initNavigationBar];
+    [self setupGridView];
+    [self setupNavigationBar];
+    [self setupToolBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.gridView reloadData];
 }
 
 #pragma mark Private Method
@@ -73,8 +80,13 @@
 
 #pragma mark YYGridViewDelegate
 -(void)YYGridView:(YYGridView *)YYGridView didSelectCellAtRowIndex:(int)rowIndex columnIndex:(int)columnIndex {
-    //int column = [YYGridView numberOfColumns];
-    //int index = rowIndex *column + columnIndex;
+    int column = [YYGridView numberOfColumns];
+    int index = rowIndex *column + columnIndex;
+    
+    YYImagePreviewViewController *preview = [[YYImagePreviewViewController alloc] init];
+    preview.listData = self.listData;
+    preview.currentIndex = index;
+    [self.navigationController pushViewController:preview animated:YES];
 }
 
 -(void)YYGridView:(YYGridView *)YYGridView didClickRadioButtonAtRowIndex:(int)rowIndex columnIndex:(int)columnIndex {
@@ -88,30 +100,47 @@
     } else {
         // data for test
         self.listData = [[NSMutableArray alloc] init];
-        for (int i = 0; i < 60; i++) {
-            YYGridDataModel *dataModel = [[YYGridDataModel alloc] init];
-            [self.listData addObject:dataModel];
-        }
+        [[YYAssetsManager sharedInstance] allAssetsWithGroup:self.group completionHandler:^(NSArray * allAssets){
+            for (ALAsset * asset in allAssets) {
+                YYGridDataModel *dataModel = [[YYGridDataModel alloc] init];
+                dataModel.image = [UIImage imageWithCGImage:asset.thumbnail];
+                dataModel.assetsURL = asset.defaultRepresentation.url;
+                dataModel.asset = asset;
+                [self.listData addObject:dataModel];
+                NSLog(@"%@",[NSValue valueWithCGSize:asset.defaultRepresentation.dimensions]);
+            }
+            [self.gridView reloadData];
+        }];
     }
 }
 
-- (void)initYYGridView {
-    self.YYGridView = [[YYGridView alloc] initWithFrame:self.view.frame];
-    self.YYGridView.YYGridViewDataSource = self;
-    self.YYGridView.YYGridViewDelegate = self;
-    [self.view addSubview:self.YYGridView];
+- (void)setupGridView {
+    self.gridView = [[YYGridView alloc] initWithFrame:self.view.frame];
+    self.gridView.gridViewDataSource = self;
+    self.gridView.gridViewDelegate = self;
+    [self.view addSubview:self.gridView];
 }
 
-- (void)initNavigationBar {
+- (void)setupNavigationBar {
     self.title = @"Photos";
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(leftBarButtonItemClicked:)];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(rightBarButtonItemClicked:)];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(rightBarButtonItemClicked:)];
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 
+- (void)setupToolBar
+{
+    self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, 320, 44)];
+    [self.view addSubview:self.toolBar];
+    
+    //self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom]
+    UIBarButtonItem *emptyItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonItemClicked:)];
+    [self.toolBar setItems:@[emptyItem,item]];
+}
+
+#pragma mark private
 - (void)leftBarButtonItemClicked:(id)sender {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)rightBarButtonItemClicked:(id)sender {
@@ -121,6 +150,11 @@
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+- (void)doneButtonItemClicked:(id)sender
+{
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -40,14 +40,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height)];
         self.scrollView.contentSize = CGSizeMake(frame.size.width * totalNumber, frame.size.height);
         self.scrollView.contentOffset = CGPointMake(frame.size.width * 0, 0);
         self.scrollView.pagingEnabled = YES;
         self.scrollView.delegate = self;
-        //self.scrollView.showsHorizontalScrollIndicator = NO;
-        //self.scrollView.showsVerticalScrollIndicator = NO;
-        self.scrollView.bounces = NO;
+        self.scrollView.showsHorizontalScrollIndicator = NO;
+        self.scrollView.showsVerticalScrollIndicator = NO;
+        self.scrollView.bounces = YES;
+        self.scrollView.backgroundColor = [UIColor blackColor];
         [self addSubview:self.scrollView];
         
         width = frame.size.width;
@@ -70,7 +71,7 @@
 #pragma mark Private
 - (CGRect)rectAtIndex:(NSInteger)index
 {
-    return CGRectMake(width * index, 0, width, height);
+    return CGRectMake(width * index, 0, width - kContentViewPadding, height);
 }
 - (BOOL)shouldUpdateImages
 {
@@ -157,10 +158,8 @@
     
     v.frame = newRect;
     v.tag = kViewTagOffset + index;
-    UIImage *image = [self.delegate GalleryView:self itemAtIndex:index];
-    if (image) {
-        [v setImage:image];
-    }
+    [self.delegate GalleryView:self itemAtIndex:index];
+    [v setImage:nil];
     
     [self.scrollView addSubview:v];
     [self.visibleViewSet addObject:v];
@@ -174,6 +173,16 @@
 	return v;
 }
 
+// when subthread finishes loading the image ,call this method to update displaying
+- (void)setImage:(UIImage *)image atIndex:(NSInteger)index
+{
+    for (YYZoomImageView * view in self.visibleViewSet) {
+        if (view.tag == kViewTagOffset + index) {
+            [view setImage:image];
+        }
+    }
+}
+
 #pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -181,7 +190,22 @@
         if ([self shouldUpdateImages]) {
             [self updateImages];
         }
+        
+        // caculate the current page/index
+        CGFloat pageWidth = scrollView.frame.size.width;
+        int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        if (page != _currentIndex) {
+            _currentIndex = page;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(GalleryView:didScrollToIndex:)]) {
+                [self.delegate GalleryView:self didScrollToIndex:page];
+            }
+        }
+        
     }
 }
 
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    
+}
 @end
